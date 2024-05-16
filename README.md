@@ -2,10 +2,6 @@
 
 [![Check it out](/public/favicon.ico)](https://hugo-mialhe.vercel.app)
 
-```sh
-npm create astro@latest -- --template minimal
-```
-
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
