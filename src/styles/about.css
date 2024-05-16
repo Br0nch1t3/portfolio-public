@@ -1,0 +1,21 @@
+ul > li.work-experience {
+  @apply list-none flex flex-col relative;
+  &:not(:only-child) {
+    &:before {
+      content: "";
+      @apply absolute size-3 rounded-full bg-border-light -left-12 top-2;
+    }
+
+    & > .work-experience-body {
+      @apply relative flex flex-col;
+    }
+
+    &:not(:last-child) > .work-experience-body {
+      @apply pb-8;
+      &:before {
+        content: "";
+        @apply absolute -top-3 bottom-0 -left-11 w-[2px] brightness-50 bg-border-light;
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+#hello {
+  @apply flex max-lg:flex-col-reverse max-lg:justify-end lg:flex-wrap items-center overflow-x-clip lg:px-4 flex-1 overflow-clip lg:pt-0;
+
+  & > div {
+    @apply max-lg:first:mb-auto max-lg:first:mt-10;
+  }
+}
+
+#description-container {
+  @apply lg:flex-1 lg:h-full lg:flex lg:items-center max-lg:text-center max-lg:px-10;
+
+  & > span {
+    @apply max-w-lg lg:ml-10 text-xl xl:text-3xl leading-loose text-slate-200;
+  }
+}
+
+#self-typing-text-container {
+  @apply lg:flex-1 text-4xl lg:text-7xl xl:text-9xl justify-self-center lg:ml-8 xl:justify-self-start max-lg:w-full max-lg:flex max-lg:flex-col max-lg:items-center;
+}

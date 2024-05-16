@@ -1,0 +1,83 @@
+---
+import { Experience } from "@/components/shared/types/experience";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import "@/styles/about.css";
+import cn from "@/utils/classnames";
+import { formatDuration } from "@/utils/dates";
+import dayjs from "dayjs";
+import Tag from "../shared/Tag";
+import CompanyIcon from "../shared/icons/CompanyIcon";
+
+type Props = {
+  experience: Experience;
+  class?: string;
+};
+const { experience, class: className } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const totalDuration =
+  experience.jobs.length > 0
+    ? experience.jobs
+        .map((job) => dayjs(job.end).diff(job.start))
+        .reduce((prev, curr) => prev + curr)
+    : 0;
+---
+
+<div class={cn("flex mt-10 first-of-type:mt-0 space-x-4", className)}>
+  {
+    experience.logo ? (
+      <img
+        class="size-12 lg:size-24"
+        width={96}
+        height={96}
+        src={experience.logo?.src}
+        alt={experience.logo?.alt}
+      />
+    ) : (
+      <CompanyIcon class="size-12 lg:size-24" />
+    )
+  }
+  <div class="flex flex-col">
+    <span class="inline-flex flex-col font-bold min-h-12 lg:min-h-24">
+      {experience.company}
+      <span class="font-normal">
+        {formatDuration(dayjs(0), dayjs(totalDuration), lang)}
+      </span>
+    </span>
+    <ul class="mt-4">
+      {
+        experience.jobs.map((job) => (
+          <li class="work-experience">
+            <span class="font-bold lg:mb-2">{job.title}</span>
+            <div class="work-experience-body">
+              {job.type && (
+                <span class="">
+                  {job.type}
+                  <br/>
+                </span>
+              )}
+              <span class="text-base brightness-50">
+                {job.start.format("MMM YYYY")} -{" "}
+                {job.end ? job.end.format("MMM YYYY") : "Now"} ·{" "}
+                {formatDuration(
+                  dayjs(0),
+                  dayjs(dayjs(job.end).diff(job.start)),
+                  lang
+                )}{" "}
+                <br />
+                {job.location},
+                <br />
+                {job.country}{job.attendance && " · " + t(job.attendance)}
+              </span>
+              <div class="flex flex-wrap gap-2 mt-3">
+                {job.tags?.map((tag) => <Tag>{tag}</Tag>)}
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+    <hr class="last:hidden" />
+  </div>
+</div>

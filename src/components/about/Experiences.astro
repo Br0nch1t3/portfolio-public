@@ -1,0 +1,97 @@
+---
+import epitechLogo from "@/assets/images/epitech-logo.webp";
+import takerLogo from "@/assets/images/taker-logo.webp";
+import ExperienceComponent from "@/components/about/ExperienceComponent.astro";
+import Title from "@/components/about/Title";
+import { Experience } from "@/components/shared/types/experience";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import dayjs from "dayjs";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const workExperiences: Experience[] = [
+  {
+    company: "Orkester",
+    jobs: [
+      {
+        start: dayjs("09/01/2022"),
+        end: dayjs("04/01/2024"),
+        location: "Lyon, Auvergne-Rhône-Alpes",
+        title: t("fullstackDevelopper")!,
+        type: t("apprenticeship"),
+        attendance: "hybrid",
+        country: "France",
+        tags: ["React", "Flutter", "NestJS"],
+      },
+      {
+        start: dayjs("04/01/2022"),
+        end: dayjs("09/01/2022"),
+        location: "Lyon, Auvergne-Rhône-Alpes",
+        title: "Mobile developer",
+        type: t("internship"),
+        attendance: "hybrid",
+        country: "France",
+        tags: ["Flutter", t("oop")!, "Design patterns"],
+      },
+    ],
+  },
+  {
+    company: "Junior Conseil Taker",
+    logo: { src: takerLogo.src, alt: "Taker Logo" },
+    jobs: [
+      {
+        title: t("fullstackDevelopper")!,
+        attendance: "remote",
+        country: "France",
+        location: "Lyon, Auvergne-Rhône-Alpes",
+        start: dayjs("04/01/2021"),
+        end: dayjs("02/01/2024"),
+        tags: [
+          "Typescript",
+          "Angular",
+          "React Native",
+          "Flutter",
+          "Express",
+          "Nest",
+        ],
+        type: t("contract"),
+      },
+    ],
+  },
+];
+
+const educationExperiences: Experience[] = [
+  {
+    company: "EPITECH - European Institute of Technology logo",
+    logo: { src: epitechLogo.src, alt: "Epitech logo" },
+    jobs: [
+      {
+        country: "France",
+        location: "Lyon, Auvergne-Rhône-Alpes",
+        start: dayjs("09/01/2019"),
+        end: dayjs("09/01/2024"),
+        title: t("epitechTitle")!,
+        tags: ["C", "Go", "C++", "DevOps", "Data science", t("cybersecurity")!],
+      },
+    ],
+  },
+];
+---
+
+<div
+  class="flex overflow-auto flex-col col-span-2 self-start p-5 text-xl rounded-xl border lg:p-10 lg:text-2xl bg-background-light border-border xl:col-span-1"
+>
+  <Title>{t("workExperience")}</Title>
+  {
+    workExperiences.map((experience) => (
+      <ExperienceComponent experience={experience} />
+    ))
+  }
+  <Title class="mt-14">Education</Title>
+  {
+    educationExperiences.map((experience) => (
+      <ExperienceComponent experience={experience} />
+    ))
+  }
+</div>

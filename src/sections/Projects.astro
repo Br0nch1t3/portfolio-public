@@ -1,0 +1,41 @@
+---
+import GluttonScreenshot from "@/assets/images/glutton-screenshot.webp";
+import PortfolioScreenshot from "@/assets/images/portfolio-screenshot.webp";
+import ProjectCard from "@/components/projects/ProjectCard";
+import SectionTitle from "@/components/shared/SectionTitle.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+---
+
+<div id="projects" class="flex relative flex-col pb-20">
+  <SectionTitle>
+    {t("projects")}
+  </SectionTitle>
+  <div class="flex flex-col px-10 mt-5 space-y-8 lg:px-20 animate-slide-odd">
+    <ProjectCard
+      title="Glutton"
+      subtitle={t("gluttonSubtitle")!}
+      date="02/2024"
+      languages={["Go", "Typescript", "Influx", "Grafana", "Docker"]}
+      source="https://github.com/Br0nch1t3/Glutton"
+      tags={[t("dataVisualization")!, "DevOps", "Microservices", "Backend"]}
+      image={GluttonScreenshot}
+    >
+      {t("gluttonDescription")}
+    </ProjectCard>
+    <ProjectCard
+      title="Portfolio"
+      subtitle={t("portfolioSubtitle")!}
+      date="05/2024"
+      languages={["Astro", "Solid", "Typescript", "Tailwind",]}
+      source="https://github.com/Br0nch1t3/portfolio-public"
+      tags={["Frontend", "SEO", "UX/UI", t("translation")]}
+      image={PortfolioScreenshot}
+    >
+      {t("portfolioDescription")}
+    </ProjectCard>
+  </div>
+</div>

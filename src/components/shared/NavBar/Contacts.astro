@@ -1,0 +1,49 @@
+---
+import FancyButton from "@/components/buttons/FancyButton";
+import { getLangFromUrl, langs, useTranslations } from "@/i18n/utils";
+import LinkedinIcon from "../icons/LinkedinIcon";
+import MailIcon from "../icons/MailIcon";
+
+const lang = getLangFromUrl(Astro.url);
+const otherLang = langs.filter((l) => l !== lang).at(0)!;
+const t = useTranslations(lang)
+const href = new URL(`/${otherLang}`, Astro.url).href
+---
+
+<div
+  class="flex relative justify-center items-center h-full max-lg:p-4 lg:space-x-8 lg:absolute lg:right-10"
+>
+  <FancyButton
+    href="https://www.malt.fr/profile/hugomialhe"
+    target="_blank"
+    class="mr-auto"
+  >
+    {t("hireMe")}
+  </FancyButton>
+  <div
+    id="more-contacts"
+    class="flex right-0 justify-center items-center space-x-4 max-lg:ml-4 lg:space-x-8 bg-background-light"
+  >
+    <a
+      class="flex items-center space-x-2 text-lg cursor-pointer hover-underline"
+      href="mailto:hugo.mialhe@epitech.eu"
+    >
+      <MailIcon class="size-6" />
+      <span class="max-lg:hidden">Email</span>
+    </a>
+    <a
+      class="flex items-center space-x-2 text-base cursor-pointer hover-underline"
+      href="https://www.linkedin.com/in/hugo-mialhe-0182a119b/"
+      target="_blank"
+    >
+      <LinkedinIcon class="size-6" />
+      <span class="max-lg:hidden">Linkedin</span>
+    </a>
+  </div>
+  <a
+    href={href}
+    class="inline-flex justify-center items-center text-sm rounded-full border cursor-pointer select-none size-8 lg:size-12 lg:text-base max-lg:ml-4 hover:text-black hover:bg-white"
+  >
+    {otherLang.toUpperCase()}
+  </a>
+</div>

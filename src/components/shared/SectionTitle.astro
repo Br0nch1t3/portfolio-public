@@ -1,0 +1,28 @@
+---
+import cn from "@/utils/classnames";
+
+type Props = {
+  class?: string;
+};
+
+const {class: className} = Astro.props;
+---
+
+<div
+  class={cn(
+    "flex flex-col self-center w-min capitalize lg:self-end",
+    className
+  )}
+>
+  <span
+    class="px-20 pb-4 w-min text-4xl whitespace-nowrap lg:text-5xl xl:text-6xl text-secondary"
+  >
+    <slot />
+  </span>
+  <div>
+    <hr class="float-right mb-3 w-full animate-inview animate-grow" />
+  </div>
+  <div class={"w-5/6 lg:self-end self-center"}>
+    <hr class="float-right mb-3 w-full animate-inview animate-grow" />
+  </div>
+</div>

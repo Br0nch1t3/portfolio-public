@@ -1,0 +1,40 @@
+---
+import profileImage from "@/assets/images/profile.webp";
+import Experiences from "@/components/about/Experiences.astro";
+import Skills from "@/components/about/Skills.astro";
+import SectionTitle from "@/components/shared/SectionTitle.astro";
+import DownloadIcon from "@/components/shared/icons/DownloadIcon";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div id="about">
+  <div class="flex justify-between max-lg:flex-col-reverse">
+    <img
+      class="ml-20 rounded-lg border-2 size-60 max-lg:hidden border-border"
+      width={240}
+      height={240}
+      src={profileImage.src}
+      alt={`Hugo Mialhe - ${t("profilePicture")}`}
+    />
+    <div class="flex flex-col self-end max-lg:self-center">
+      <SectionTitle>{t("aboutMe")}</SectionTitle>
+    </div>
+  </div>
+  <div
+    class="grid grid-cols-2 items-center px-10 mt-5 max-xl:space-y-5 overflow-x-clip lg:px-20 xl:space-x-10"
+  > 
+    <Skills />
+    <Experiences/>
+    <a
+      class="col-span-2 p-2 lg:p-4 !ml-0 xl:mt-5 w-full border bg-background-light border-border-light rounded-xl inline-flex items-center justify-center gap-x-4 lg:text-2xl cursor-pointer"
+      target="_blank"
+      href={"/cv-hugo-mialhe.pdf"}
+    >
+      <DownloadIcon class="size-6" />
+      {t("viewMyResume")}
+    </a>
+  </div>
+</div>

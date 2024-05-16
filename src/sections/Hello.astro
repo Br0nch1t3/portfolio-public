@@ -1,0 +1,24 @@
+---
+import RightCaption from "@/components/hello/RightCaption";
+import LineNumbers from "@/components/shared/LineNumbers.astro";
+import "@/styles/hello.css";
+import {getLangFromUrl, useTranslations} from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<div id="hello">
+  <div id="description-container">
+    <div class="line-numbers-container">
+      <LineNumbers />
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <span>
+      {t("whoAmI")}
+    </span>
+  </div>
+  <RightCaption client:load subtitle={t("fullstackDevelopper")!} />
+</div>

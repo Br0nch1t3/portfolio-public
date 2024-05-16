@@ -1,0 +1,21 @@
+---
+import Contacts from "./Contacts.astro";
+import NavBarWrapper from "./NavBarWrapper";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<nav
+  class="sticky top-0 z-10 drop-shadow bg-background-light max-lg:h-fit lg:max-h-24"
+>
+  <Contacts />
+  <NavBarWrapper client:load>
+    <div id="navigation-links">
+      <a href="#hello">{t("helloWorld")}</a>
+      <a href="#about">{t("aboutMe")}</a>
+      <a href="#projects">{t("projects")}</a>
+    </div>
+  </NavBarWrapper>
+</nav>

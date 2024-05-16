@@ -1,0 +1,30 @@
+---
+import ProgressBar from "@/components/shared/ProgressBar";
+import Title from "./Title";
+import { useTranslations, getLangFromUrl } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div class="col-span-2 h-full xl:col-span-1">
+  <div
+    class="flex flex-col self-start p-10 text-2xl rounded-xl border bg-background-light xl:mt-0 border-border xl:sticky xl:top-24"
+  >
+    <Title>{t("skills")}</Title>
+    <div class="flex flex-col space-y-2 lg:mt-10">
+      <ProgressBar label="Go" value={80} />
+      <ProgressBar label="C" value={80} />
+      <ProgressBar label="C++" value={60} />
+      <ProgressBar label="NestJs" value={80} />
+      <ProgressBar label="TypeScript" value={80} />
+      <ProgressBar label="Java" value={50} />
+      <ProgressBar label="Python" value={50} />
+      <ProgressBar label="Elixyr" value={30} />
+    </div>
+    <Title>{t("languages")}</Title>
+    <div class="flex flex-col space-y-2 lg:mt-10">
+      <ProgressBar label={t("english")!} value={100} />
+    </div>
+  </div>
+</div>

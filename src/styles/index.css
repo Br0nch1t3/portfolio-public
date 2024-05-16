@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 241, 248, 242;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 241, 248, 242;
+  }
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: rgb(var(--foreground-rgb));
+  @apply bg-background selection:bg-secondary;
+}
+
+#root {
+  @apply flex flex-col;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+main > div {
+  @apply pt-24 min-h-screen;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-inview {
+    animation-play-state: paused;
+  }
+
+  .animate {
+    animation-play-state: running;
+  }
+}
+
+#navigation-links {
+  @apply bg-background-light flex text-start overflow-hidden max-lg:hidden;
+
+  & > a {
+    @apply p-1 px-2 lg:p-6 font-light text-xl lg:text-2xl xl:text-3xl cursor-pointer hover:bg-[#1e1f28] capitalize;
+    &.selected {
+      @apply border-b-4 border-primary max-lg:border-b-2;
+    }
+  }
+}
+
+.hover-underline {
+  & > span {
+    @apply relative;
+  }
+
+  &:hover > span:after {
+    @apply border w-full;
+  }
+
+  & > span:after {
+    content: "";
+    @apply absolute -bottom-[2px] left-0 right-0 border-secondary w-0 transition-all;
+  }
+}
+
+.fancy-button {
+  @apply text-xl lg:text-3xl rounded-lg relative bg-background-light py-1 px-3 transition-all hover:shadow-primary hover:shadow-centered;
+  &:after {
+    content: "";
+    @apply absolute left-0 right-0 bottom-0 top-0 border-2 border-secondary rounded-lg animate-wiggle hover:animate-none;
+  }
+}
+
+.fading-text {
+  @apply text-xl lg:text-2xl xl:h-full relative max-lg:inline-flex max-lg:items-center;
+}
+
+.line-numbers-container {
+  @apply hidden lg:flex lg:h-min lg:space-x-10;
+  & > div:not(:first-child) {
+    @apply border-l-2 flex-1 border-[#62646c];
+  }
+
+  & > div:nth-child(3) {
+    @apply flex-1 lg:my-[60%] xl:my-[40%];
+  }
+
+  & > div:nth-child(4) {
+    @apply flex-1 lg:my-[90%] xl:my-[80%] mx-0;
+  }
+}
+
+.animate-slide-odd {
+  @apply overflow-x-hidden;
+}
+
+.animate-slide-odd > div:nth-child(even) {
+  @apply animate-inview animate-slide-fade-left;
+}
+
+.animate-slide-odd > div:nth-child(odd) {
+  @apply animate-inview animate-slide-fade-right;
+}

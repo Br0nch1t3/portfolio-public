@@ -1,0 +1,29 @@
+{
+  "name": "portfolio",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "check": "astro check",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/vercel": "^7.6.0",
+    "astro-compress": "^2.2.23",
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.11",
+    "solid-js": "^1.8.17",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss": "^3.4.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.5.10",
+    "@astrojs/solid-js": "^4.1.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.7.0",
+    "typescript": "^5.4.5"
+  }
+}
