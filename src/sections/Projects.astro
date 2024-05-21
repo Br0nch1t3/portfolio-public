@@ -1,6 +1,7 @@
 ---
 import GluttonScreenshot from "@/assets/images/glutton-screenshot.webp";
 import PortfolioScreenshot from "@/assets/images/portfolio-screenshot.webp";
+import SiteCrawlerScreenshot from "@/assets/images/site-crawler-screenshot.webp";
 import ProjectCard from "@/components/projects/ProjectCard";
 import SectionTitle from "@/components/shared/SectionTitle.astro";
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
@@ -36,6 +37,17 @@ const t = useTranslations(lang)
       image={PortfolioScreenshot}
     >
       {t("portfolioDescription")}
+    </ProjectCard>
+    <ProjectCard
+      title="Site Crawler"
+      subtitle={t("siteCrawlerSubtitle")!}
+      date="05/2024"
+      languages={["go"]}
+      source="https://github.com/Br0nch1t3/site-crawler"
+      tags={[t("parallelism")!, "Goroutines", "Parsing", "CLI"]}
+      image={SiteCrawlerScreenshot}
+    >
+      {t("siteCrawlerDescription")}
     </ProjectCard>
   </div>
 </div>

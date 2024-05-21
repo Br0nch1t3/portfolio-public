@@ -1,5 +1,7 @@
 import type { APIRoute } from 'astro';
 
-export const GET: APIRoute = ({ redirect, currentLocale }) => {
-  return redirect(`/${currentLocale ?? "fr"}`, 302);
+export const GET: APIRoute = ({ redirect, preferredLocale }) => {
+  console.log(preferredLocale)
+
+  return redirect(`/${preferredLocale ?? "fr"}`, 302);
 }

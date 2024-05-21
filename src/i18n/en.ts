@@ -41,7 +41,11 @@ export const en = {
   portfolioSubtitle: 'My portfolio',
   portfolioDescription: `The portfolio you are looking at, made with Astro, SolidJS and typescript.
   Designed to be as lightweight as possible while facilitating maintainability, deployment and SEOs(Search Engine Optimizations).`,
-  translation: "Translation"
+  translation: "Translation",
+  siteCrawlerSubtitle: "A sitemap generator",
+  siteCrawlerDescription: `A program written in Go intended to automatically create a sitemap for your website by crawling every text link it can find.
+  This program makes use of goroutines to accelerate the crawling process.`,
+  parallelism: "Parallelism"
 }
 
 export type Dict = typeof en;
